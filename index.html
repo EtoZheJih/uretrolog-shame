@@ -211,7 +211,37 @@
     }
 
     .featured-tariff {
-      border-color: rgba(255, 79, 216, 0.5) !important;
+      border-color: rgba(255, 79, 216, 0.5);
+    }
+
+    .card.clicked,
+    .card.clicked.featured-tariff {
+      animation: tariffPulse 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border-color: var(--accent-2);
+      background: linear-gradient(160deg, rgba(125, 255, 234, 0.15), rgba(255, 79, 216, 0.15));
+      box-shadow: 0 0 40px rgba(125, 255, 234, 0.4), 0 20px 50px rgba(0, 0, 0, 0.4);
+      animation-fill-mode: forwards;
+    }
+
+    .card:hover,
+    .featured-tariff:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      border-color: rgba(255, 79, 216, 0.4);
+    }
+
+    .featured-tariff:hover {
+      border-color: rgba(255, 79, 216, 0.7);
+    }
+
+    /* После анимации возвращаем исходный цвет для featured тарифа */
+    .card:not(.clicked).featured-tariff {
+      border-color: rgba(255, 79, 216, 0.5);
+    }
+
+    /* Hover после анимации */
+    .card:not(.clicked).featured-tariff:hover {
+      border-color: rgba(255, 79, 216, 0.7);
     }
 
     .card.clicked {
@@ -219,6 +249,7 @@
       border-color: var(--accent-2) !important;
       background: linear-gradient(160deg, rgba(125, 255, 234, 0.15), rgba(255, 79, 216, 0.15));
       box-shadow: 0 0 40px rgba(125, 255, 234, 0.4), 0 20px 50px rgba(0, 0, 0, 0.4);
+      animation-fill-mode: forwards;
     }
 
     @keyframes tariffPulse {
@@ -952,7 +983,7 @@
         // Убираем класс через время
         setTimeout(() => {
           card.classList.remove("clicked");
-        }, 600);
+        }, 1000); // Увеличиваем до 1000ms чтобы совпадало с длительностью анимации
         
         // Сообщения для разных тарифов
         const messages = [
