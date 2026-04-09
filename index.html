@@ -295,6 +295,143 @@
       font-size: 0.93rem;
     }
 
+    .fun-lab {
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 16px;
+      padding: 16px;
+      background: linear-gradient(160deg, rgba(255, 79, 216, 0.08), rgba(125, 255, 234, 0.08));
+    }
+
+    .fun-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .fun-box {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      padding: 12px;
+      background: rgba(13, 11, 26, 0.75);
+    }
+
+    .fun-box h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+
+    .mini-btn {
+      margin-top: 8px;
+      border: 0;
+      border-radius: 10px;
+      padding: 8px 10px;
+      background: #332a61;
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 8px;
+      color: #ddd3ff;
+      font-size: 0.95rem;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .chip {
+      border: 1px solid rgba(125, 255, 234, 0.35);
+      border-radius: 999px;
+      background: rgba(125, 255, 234, 0.1);
+      color: #cbfff4;
+      font-size: 0.85rem;
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+
+    .ticker {
+      margin-top: 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 9px 12px;
+      color: #fde9ff;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .cases-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cases-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .arrow-btn {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: #241f44;
+      color: #fff;
+      border-radius: 10px;
+      padding: 6px 10px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .page-indicator {
+      color: #c7c0e8;
+      font-size: 0.9rem;
+      min-width: 54px;
+      text-align: center;
+    }
+
+    .cat-comet {
+      position: fixed;
+      left: -180px;
+      top: 20%;
+      z-index: 60;
+      font-size: clamp(3rem, 8vw, 5rem);
+      opacity: 0;
+      pointer-events: none;
+      filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.4));
+      transform: translateX(0) rotate(0deg);
+      will-change: transform, opacity;
+    }
+
+    .cat-comet.fly {
+      animation: catFly 4.8s linear forwards;
+    }
+
+    @keyframes catFly {
+      0% {
+        opacity: 0;
+        transform: translateX(-150px) rotate(0deg);
+      }
+      8% {
+        opacity: 0.45;
+      }
+      92% {
+        opacity: 0.45;
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(calc(100vw + 260px)) rotate(1080deg);
+      }
+    }
+
     .final {
       text-align: center;
       padding-bottom: 70px;
@@ -327,9 +464,19 @@
       padding: 20px 10px 30px;
       font-size: 0.9rem;
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
 </head>
 <body>
+  <div class="cat-comet" id="catComet" aria-hidden="true">🐈‍⬛</div>
   <header class="topbar">
     <div class="container topbar-inner">
       <div class="brand">✨ УРЕТРОЛОГ</div>
@@ -349,7 +496,7 @@
         <a class="btn btn-main" href="#tariffs">Разблокировать поток сейчас</a>
         <a class="btn btn-alt" href="#cases">Посмотреть кейсы исцеления</a>
       </div>
-      <div class="status" id="stockStatus">Осталось свободных мест на поток: 4</div>
+      <div class="status" id="stockStatus" aria-live="polite">Осталось свободных мест на поток: 4</div>
     </section>
 
     <section class="container" id="problems">
@@ -375,15 +522,15 @@
       <p class="muted">Космос, луга и мощный интеллектуальный контекст: чем абсурднее, тем глубже инсайт.</p>
       <div class="gallery-grid">
         <article class="visual-card">
-          <img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=1200&q=80" alt="Космическая туманность и звезды">
+          <img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=1200&q=80" alt="Космическая туманность и звезды" loading="lazy" decoding="async">
           <p class="visual-caption">Когда смотришь в галактику 4 секунды, твой внутренний KPI начинает светиться фиолетовым.</p>
         </article>
         <article class="visual-card">
-          <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1200&q=80" alt="Луг с деревьями и оленем">
+          <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1200&q=80" alt="Луг с деревьями и оленем" loading="lazy" decoding="async">
           <p class="visual-caption">Луг с деревьями напоминает: если олень нашел баланс, то и ты найдешь свой денежный фотосинтез.</p>
         </article>
         <article class="visual-card">
-          <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1200&q=80" alt="Глубокий космос и звездное небо">
+          <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1200&q=80" alt="Глубокий космос и звездное небо" loading="lazy" decoding="async">
           <p class="visual-caption">Глубокий космос официально одобряет твой переход из режима "ну потом" в режим "я уже сделал".</p>
         </article>
       </div>
@@ -448,42 +595,84 @@
       </div>
     </section>
 
+    <section class="container" id="interactive">
+      <h2>Интерактивный центр потока</h2>
+      <div class="fun-lab">
+        <p class="muted">Нажимай кнопки, получай диагнозы, выбивай места и повышай уровень рофло-просветления.</p>
+        <div class="fun-grid">
+          <article class="fun-box">
+            <h3>Диагноз потока</h3>
+            <button class="mini-btn" id="diagnosisBtn">Поставить диагноз</button>
+            <div class="result" id="diagnosisResult">Ожидаю диагностику...</div>
+          </article>
+          <article class="fun-box">
+            <h3>Мантра дня</h3>
+            <button class="mini-btn" id="newMantraBtn">Дай ультра-мантру</button>
+            <div class="result" id="mantraResult">Нажми кнопку, чтобы получить усиление.</div>
+          </article>
+          <article class="fun-box">
+            <h3>Выбить место в потоке</h3>
+            <button class="mini-btn" id="slotHackBtn">Попробовать выбить</button>
+            <div class="result" id="slotHackResult">Статус: рынок мест нестабилен.</div>
+          </article>
+          <article class="fun-box">
+            <h3>Квиз: насколько ты в застое?</h3>
+            <p class="muted">Сколько вкладок "начну с понедельника" у тебя обычно открыто?</p>
+            <div class="quiz-options">
+              <button class="chip" data-score="1">0-3, я собран</button>
+              <button class="chip" data-score="2">4-9, есть нюанс</button>
+              <button class="chip" data-score="3">10+, я легенда прокрастинации</button>
+            </div>
+            <div class="result" id="quizResult">Ответь, и поток вынесет вердикт.</div>
+          </article>
+        </div>
+        <div class="ticker" id="liveTicker" aria-live="polite">LIVE: Система наблюдает за колебаниями космоклапана...</div>
+      </div>
+    </section>
+
     <section class="container" id="cases">
-      <h2>Отзывы просветленных</h2>
-      <div class="grid grid-2">
-        <article class="card">
+      <div class="cases-head">
+        <h2>Отзывы просветленных</h2>
+        <div class="cases-controls">
+          <button class="arrow-btn" id="casesPrev" aria-label="Предыдущие отзывы">←</button>
+          <div class="page-indicator" id="casesPage">1 / 3</div>
+          <button class="arrow-btn" id="casesNext" aria-label="Следующие отзывы">→</button>
+        </div>
+      </div>
+      <div class="grid grid-3" id="casesTrack">
+        <article class="card testimonial-item">
           <h3>Игорь, 29</h3>
           <p class="quote">"После сессии у Уретролога я перестал бояться понедельников и начал бояться только упустить возможности. За неделю закрыл три зависших задачи, которые откладывал месяцами, и впервые почувствовал, что реально управляю своим ритмом."</p>
         </article>
-        <article class="card">
+        <article class="card testimonial-item">
           <h3>Алла, 34</h3>
           <p class="quote">"Мой поток открылся так мощно, что я продала 3 курса про женскую энергию за вечер. Благодарю космоклапан! Плюс исчез вечный хаос в голове: появился план, уверенность и ощущение, что жизнь снова играет за меня."</p>
         </article>
-        <article class="card">
+        <article class="card testimonial-item">
           <h3>Копье, 14</h3>
           <p class="quote">"До консультации я был кринжовый и будто никому не нужный: сидел в себе, сливал дни и ловил только неловкость. После разбора у Уретролога собрался, начал помогать маме каждый день по дому и подтянул учебу до стабильных четверок. Даже классуха сказала, что я как будто включил режим нормального человека."</p>
         </article>
-        <article class="card">
+        <article class="card testimonial-item">
           <h3>Аноним из Discord</h3>
           <p class="quote">"Это кринж, но работает. Я даже не знаю как. 10/10."</p>
         </article>
-        <article class="card">
+        <article class="card testimonial-item">
           <h3>Гоша, 24</h3>
           <p class="quote">"Я пришел скептиком, а ушел с ощущением, что мне лично аплодировал космос. После консультации у Уретролога я закрыл старые долги, начал действовать без вечных "завтра" и впервые за долгое время почувствовал, что мой внутренний поток не просто открыт - он в турбо-режиме. Это не консультация, это легендарная перезагрузка жизни! Кидать карту стало легче, чем когда-либо!"</p>
         </article>
-        <article class="card">
+        <article class="card testimonial-item">
           <h3>Марина, 27</h3>
           <p class="quote">"Я думала, что у меня просто нет мотивации, а оказалось - зажат поток решений. После разбора у меня появился четкий фокус, я собрала портфолио и получила первый жирный заказ за 5 дней."</p>
         </article>
-        <article class="card">
+        <article class="card testimonial-item">
           <h3>Андрей, 55</h3>
           <p class="quote">"После консультации у меня будто открылся тактический клапан: в Helldivers миссии начал проходить чище, спокойнее и даже быстрее, чем раньше. Там, где раньше паниковал и ронял тимплей, теперь уверенно веду отряд, грамотно закрываю задачи и выношу демократию с ювелирной точностью. Товарищи по скваду сказали, что я стал настоящим ветеранским баффом команды."</p>
         </article>
-        <article class="card">
+        <article class="card testimonial-item">
           <h3>Соня, 23</h3>
           <p class="quote">"После сессии будто сняли внутренний ручник. Я начала вести канал стабильно, перестала удалять посты из-за перфекционизма и получила первую тысячу живых подписчиков."</p>
         </article>
-        <article class="card">
+        <article class="card testimonial-item">
           <h3>Кирилл, 36</h3>
           <p class="quote">"Уретролог собрал мой хаос в рабочую систему за один созвон. Я перестал бегать по кругу, вернул режим, и даже коллеги заметили: 'Ты что, реально в поток вошел?'"</p>
         </article>
@@ -497,7 +686,7 @@
         уровня застоя в течение 12 минут.
       </p>
       <a class="btn btn-main" href="https://discord.com/users/292370580047659008" target="_blank" rel="noreferrer">Записаться в Discord</a>
-      <div class="pulse" id="mantraLine">[ Инициализация космического потока... ]</div>
+      <div class="pulse" id="mantraLine" aria-live="polite">[ Инициализация космического потока... ]</div>
     </section>
   </main>
 
@@ -508,6 +697,8 @@
   <script>
     const stock = document.getElementById("stockStatus");
     const mantra = document.getElementById("mantraLine");
+    const catComet = document.getElementById("catComet");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const mantras = [
       "Поток идет. Клапан поет.",
       "Ты не в тупике, ты в гидро-переходе.",
@@ -542,9 +733,24 @@
       "Энергетический аудит: часть мест ушла в VIP-измерение.",
       "Срочный созвон с галактикой: добавлен один слот."
     ];
+    const diagnosisPool = [
+      "Диагноз: зажим потока 82%. Срочно нужен ритуал 'чай и действие'.",
+      "Диагноз: чакра дедлайна воспалена. Выписан тариф 'Мощный Поток'.",
+      "Диагноз: луг изобилия в спячке. Рекомендуем контент-полив 2 раза в день.",
+      "Диагноз: уровень сомнений критический. Нужна инъекция решительности.",
+      "Диагноз: гиперрефлексия 5-й степени. Лечится первыми шагами."
+    ];
+    const liveEvents = [
+      "LIVE: Сергей из Омска открыл космоклапан и взял 'Капельку'.",
+      "LIVE: Неизвестный герой выбил +1 место через кнопку хака.",
+      "LIVE: Марина включила турбо-поток и закрыла 2 дедлайна.",
+      "LIVE: Андрей, 55, снова идеально отыграл миссию в Helldivers.",
+      "LIVE: Аноним из Discord написал: 'кринж, но мне нравится'.",
+      "LIVE: Копье, 14, получил четверку и уважение класса."
+    ];
 
     let places = 7;
-    setInterval(() => {
+    function updateStock() {
       const roll = Math.random();
 
       if (roll < 0.18) {
@@ -564,13 +770,160 @@
         const format = stockMessages[Math.floor(Math.random() * stockMessages.length)];
         stock.textContent = format(places);
       }
-    }, 2200);
+    }
 
     let i = 0;
-    setInterval(() => {
+    function updateMantra() {
       mantra.textContent = `[ ${mantras[i % mantras.length]} ]`;
       i++;
-    }, 2500);
+    }
+
+    const diagnosisBtn = document.getElementById("diagnosisBtn");
+    const diagnosisResult = document.getElementById("diagnosisResult");
+    const newMantraBtn = document.getElementById("newMantraBtn");
+    const mantraResult = document.getElementById("mantraResult");
+    const slotHackBtn = document.getElementById("slotHackBtn");
+    const slotHackResult = document.getElementById("slotHackResult");
+    const quizResult = document.getElementById("quizResult");
+    const quizChips = document.querySelectorAll(".chip");
+    const liveTicker = document.getElementById("liveTicker");
+
+    diagnosisBtn.addEventListener("click", () => {
+      diagnosisResult.textContent = diagnosisPool[Math.floor(Math.random() * diagnosisPool.length)];
+    });
+
+    newMantraBtn.addEventListener("click", () => {
+      const selected = mantras[Math.floor(Math.random() * mantras.length)];
+      mantraResult.textContent = `[ ${selected} ]`;
+      mantra.textContent = `[ ${selected} ]`;
+    });
+
+    slotHackBtn.addEventListener("click", () => {
+      const roll = Math.random();
+      if (roll < 0.28) {
+        places = Math.min(12, places + 1);
+        slotHackResult.textContent = `Успех! Выбит дополнительный слот. Теперь мест: ${places}.`;
+      } else if (roll < 0.65) {
+        slotHackResult.textContent = "Почти получилось. Космошлюз просит повторить через 7 секунд.";
+      } else {
+        places = Math.max(0, places - 1);
+        slotHackResult.textContent = `Ой. Ты случайно закрыл один слот. Осталось: ${places}.`;
+      }
+      if (places === 0) {
+        stock.textContent = "Мест нет. Но паника создает возможности.";
+      }
+    });
+
+    quizChips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        const score = Number(chip.dataset.score);
+        if (score === 1) {
+          quizResult.textContent = "Вердикт: поток живой, но нуждается в полировке. Ты близко к легендарному режиму.";
+        } else if (score === 2) {
+          quizResult.textContent = "Вердикт: средний застой. Назначен мини-ритуал: 1 задача без отмазок прямо сейчас.";
+        } else {
+          quizResult.textContent = "Вердикт: ультра-застой. Срочно активируй режим 'делаю, потом думаю'.";
+        }
+      });
+    });
+
+    function updateLiveTicker() {
+      liveTicker.textContent = liveEvents[Math.floor(Math.random() * liveEvents.length)];
+    }
+
+    let stockTimer = null;
+    let mantraTimer = null;
+    let tickerTimer = null;
+    let catTimer = null;
+    let catLock = false;
+
+    function launchCatComet() {
+      if (reduceMotion || catLock) {
+        return;
+      }
+      catLock = true;
+      catComet.style.top = `${Math.floor(Math.random() * 55) + 10}%`;
+      catComet.classList.remove("fly");
+      void catComet.offsetWidth;
+      catComet.classList.add("fly");
+      setTimeout(() => {
+        catComet.classList.remove("fly");
+        catLock = false;
+      }, 5000);
+    }
+
+    function scheduleCatComet() {
+      if (reduceMotion) {
+        return;
+      }
+      const rareDelayMs = Math.floor((55 + Math.random() * 50) * 1000);
+      catTimer = window.setTimeout(() => {
+        launchCatComet();
+        scheduleCatComet();
+      }, rareDelayMs);
+    }
+
+    function startDynamicEffects() {
+      if (stockTimer || mantraTimer || tickerTimer) {
+        return;
+      }
+      stockTimer = window.setInterval(updateStock, 2200);
+      mantraTimer = window.setInterval(updateMantra, 2500);
+      tickerTimer = window.setInterval(updateLiveTicker, 3300);
+      scheduleCatComet();
+    }
+
+    function stopDynamicEffects() {
+      clearInterval(stockTimer);
+      clearInterval(mantraTimer);
+      clearInterval(tickerTimer);
+      clearTimeout(catTimer);
+      stockTimer = null;
+      mantraTimer = null;
+      tickerTimer = null;
+      catTimer = null;
+    }
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        stopDynamicEffects();
+      } else {
+        startDynamicEffects();
+      }
+    });
+
+    const testimonialItems = Array.from(document.querySelectorAll(".testimonial-item"));
+    const casesPrev = document.getElementById("casesPrev");
+    const casesNext = document.getElementById("casesNext");
+    const casesPage = document.getElementById("casesPage");
+    const perPage = 3;
+    const totalPages = Math.ceil(testimonialItems.length / perPage);
+    let currentPage = 0;
+
+    function renderTestimonials() {
+      testimonialItems.forEach((item, idx) => {
+        const from = currentPage * perPage;
+        const to = from + perPage;
+        item.style.display = idx >= from && idx < to ? "block" : "none";
+      });
+      casesPage.textContent = `${currentPage + 1} / ${totalPages}`;
+    }
+
+    casesPrev.addEventListener("click", () => {
+      currentPage = (currentPage - 1 + totalPages) % totalPages;
+      renderTestimonials();
+    });
+
+    casesNext.addEventListener("click", () => {
+      currentPage = (currentPage + 1) % totalPages;
+      renderTestimonials();
+    });
+
+    renderTestimonials();
+    updateStock();
+    updateMantra();
+    updateLiveTicker();
+    startDynamicEffects();
   </script>
 </body>
 </html>
