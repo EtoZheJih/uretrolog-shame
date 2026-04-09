@@ -191,6 +191,49 @@
       border-radius: 16px;
       padding: 18px;
       box-shadow: 0 10px 28px rgba(0, 0, 0, 0.24);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      border-color: rgba(255, 79, 216, 0.4);
+    }
+
+    .card:active {
+      transform: translateY(-6px);
+      transition: transform 0.15s ease;
+    }
+
+    .card.clicked {
+      animation: tariffPulse 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border-color: var(--accent-2);
+      background: linear-gradient(160deg, rgba(125, 255, 234, 0.15), rgba(255, 79, 216, 0.15));
+      box-shadow: 0 0 40px rgba(125, 255, 234, 0.4), 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    @keyframes tariffPulse {
+      0% { 
+        transform: scale(1) translateY(0); 
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      }
+      25% { 
+        transform: scale(1.05) translateY(-10px); 
+        box-shadow: 0 0 45px rgba(125, 255, 234, 0.45), 0 22px 55px rgba(0, 0, 0, 0.4);
+      }
+      50% { 
+        transform: scale(1.08) translateY(-12px); 
+        box-shadow: 0 0 50px rgba(125, 255, 234, 0.5), 0 25px 60px rgba(0, 0, 0, 0.45);
+      }
+      75% { 
+        transform: scale(1.05) translateY(-10px); 
+        box-shadow: 0 0 45px rgba(125, 255, 234, 0.45), 0 22px 55px rgba(0, 0, 0, 0.4);
+      }
+      100% { 
+        transform: scale(1) translateY(-8px); 
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      }
     }
 
     .card h3 {
@@ -295,75 +338,35 @@
       font-size: 0.93rem;
     }
 
-    .fun-lab {
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 16px;
-      padding: 16px;
-      background: linear-gradient(160deg, rgba(255, 79, 216, 0.08), rgba(125, 255, 234, 0.08));
-    }
 
-    .fun-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .fun-box {
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 14px;
-      padding: 12px;
-      background: rgba(13, 11, 26, 0.75);
-    }
-
-    .fun-box h3 {
-      margin: 0 0 8px;
-      font-size: 1rem;
-    }
-
-    .mini-btn {
-      margin-top: 8px;
-      border: 0;
-      border-radius: 10px;
-      padding: 8px 10px;
-      background: #332a61;
-      color: #fff;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .result {
-      margin-top: 8px;
-      color: #ddd3ff;
-      font-size: 0.95rem;
-    }
-
-    .quiz-options {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 8px;
-    }
-
-    .chip {
-      border: 1px solid rgba(125, 255, 234, 0.35);
-      border-radius: 999px;
-      background: rgba(125, 255, 234, 0.1);
-      color: #cbfff4;
-      font-size: 0.85rem;
-      padding: 6px 10px;
-      cursor: pointer;
-    }
 
     .ticker {
-      margin-top: 12px;
-      border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      background: rgba(255, 255, 255, 0.04);
-      padding: 9px 12px;
-      color: #fde9ff;
-      font-size: 0.92rem;
-      font-weight: 700;
+      margin-top: 24px;
+      border-radius: 12px;
+      border: 1px solid rgba(125, 255, 234, 0.3);
+      background: linear-gradient(90deg, rgba(125, 255, 234, 0.1), rgba(255, 79, 216, 0.1));
+      padding: 12px 16px;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 800;
+      text-align: center;
+      animation: tickerPulse 3s infinite;
+      box-shadow: 0 0 20px rgba(125, 255, 234, 0.2);
+    }
+
+    @keyframes tickerPulse {
+      0% { 
+        box-shadow: 0 0 20px rgba(125, 255, 234, 0.2);
+        border-color: rgba(125, 255, 234, 0.3);
+      }
+      50% { 
+        box-shadow: 0 0 30px rgba(255, 79, 216, 0.4);
+        border-color: rgba(255, 79, 216, 0.5);
+      }
+      100% { 
+        box-shadow: 0 0 20px rgba(125, 255, 234, 0.2);
+        border-color: rgba(125, 255, 234, 0.3);
+      }
     }
 
     .cases-head {
@@ -398,7 +401,7 @@
       text-align: center;
     }
 
-    .cat-comet {
+    .eggplant-comet {
       position: fixed;
       left: -180px;
       top: 20%;
@@ -406,29 +409,83 @@
       font-size: clamp(3rem, 8vw, 5rem);
       opacity: 0;
       pointer-events: none;
-      filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.4));
+      filter: drop-shadow(0 0 25px rgba(143, 0, 255, 0.8));
       transform: translateX(0) rotate(0deg);
       will-change: transform, opacity;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
     }
 
-    .cat-comet.fly {
-      animation: catFly 4.8s linear forwards;
+    .eggplant-comet.fly {
+      animation: eggplantFlow 4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     }
 
-    @keyframes catFly {
+    .eggplant-comet.fly.reverse {
+      animation: eggplantFlowReverse 4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+
+    @keyframes eggplantFlow {
       0% {
         opacity: 0;
-        transform: translateX(-150px) rotate(0deg);
+        transform: translateX(-180px) rotate(0deg) scale(0.8);
+        filter: drop-shadow(0 0 20px rgba(143, 0, 255, 0.6));
       }
-      8% {
-        opacity: 0.45;
+      20% {
+        opacity: 0.8;
+        transform: translateX(20vw) rotate(180deg) scale(1);
+        filter: drop-shadow(0 0 25px rgba(143, 0, 255, 0.7));
       }
-      92% {
-        opacity: 0.45;
+      40% {
+        opacity: 0.9;
+        transform: translateX(40vw) rotate(360deg) scale(1.05);
+        filter: drop-shadow(0 0 30px rgba(143, 0, 255, 0.8));
+      }
+      60% {
+        opacity: 0.95;
+        transform: translateX(60vw) rotate(540deg) scale(1.1);
+        filter: drop-shadow(0 0 35px rgba(143, 0, 255, 0.9));
+      }
+      80% {
+        opacity: 0.8;
+        transform: translateX(80vw) rotate(720deg) scale(1.05);
+        filter: drop-shadow(0 0 25px rgba(143, 0, 255, 0.7));
       }
       100% {
         opacity: 0;
-        transform: translateX(calc(100vw + 260px)) rotate(1080deg);
+        transform: translateX(calc(100vw + 200px)) rotate(900deg) scale(0.8);
+        filter: drop-shadow(0 0 15px rgba(143, 0, 255, 0.5));
+      }
+    }
+
+    @keyframes eggplantFlowReverse {
+      0% {
+        opacity: 0;
+        transform: translateX(180px) rotate(0deg) scale(0.8) scaleX(-1);
+        filter: drop-shadow(0 0 20px rgba(143, 0, 255, 0.6));
+      }
+      20% {
+        opacity: 0.8;
+        transform: translateX(-20vw) rotate(-180deg) scale(1) scaleX(-1);
+        filter: drop-shadow(0 0 25px rgba(143, 0, 255, 0.7));
+      }
+      40% {
+        opacity: 0.9;
+        transform: translateX(-40vw) rotate(-360deg) scale(1.05) scaleX(-1);
+        filter: drop-shadow(0 0 30px rgba(143, 0, 255, 0.8));
+      }
+      60% {
+        opacity: 0.95;
+        transform: translateX(-60vw) rotate(-540deg) scale(1.1) scaleX(-1);
+        filter: drop-shadow(0 0 35px rgba(143, 0, 255, 0.9));
+      }
+      80% {
+        opacity: 0.8;
+        transform: translateX(-80vw) rotate(-720deg) scale(1.05) scaleX(-1);
+        filter: drop-shadow(0 0 25px rgba(143, 0, 255, 0.7));
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(calc(-100vw - 200px)) rotate(-900deg) scale(0.8) scaleX(-1);
+        filter: drop-shadow(0 0 15px rgba(143, 0, 255, 0.5));
       }
     }
 
@@ -442,13 +499,22 @@
       margin-top: 12px;
       color: var(--ok);
       font-weight: 800;
-      animation: pulse 1.6s infinite;
+      animation: gentlePulse 2.5s ease-in-out infinite;
     }
 
-    @keyframes pulse {
-      0% { opacity: 0.5; }
-      50% { opacity: 1; }
-      100% { opacity: 0.5; }
+    @keyframes gentlePulse {
+      0% { 
+        opacity: 0.6;
+        text-shadow: 0 0 10px rgba(143, 255, 147, 0.3);
+      }
+      50% { 
+        opacity: 1;
+        text-shadow: 0 0 20px rgba(143, 255, 147, 0.6);
+      }
+      100% { 
+        opacity: 0.6;
+        text-shadow: 0 0 10px rgba(143, 255, 147, 0.3);
+      }
     }
 
     @keyframes floaty {
@@ -476,7 +542,7 @@
   </style>
 </head>
 <body>
-  <div class="cat-comet" id="catComet" aria-hidden="true">🐈‍⬛</div>
+  <div class="eggplant-comet" id="eggplantComet" aria-hidden="true">🍆</div>
   <header class="topbar">
     <div class="container topbar-inner">
       <div class="brand">✨ УРЕТРОЛОГ</div>
@@ -566,11 +632,12 @@
             <li>Пожизненный статус "потоковый братан"</li>
           </ul>
         </article>
-      </div>
-    </section>
+       </div>
+       <div class="ticker" id="liveTicker" aria-live="polite">LIVE: Система наблюдает за колебаниями космоклапана...</div>
+     </section>
 
-    <section class="container" id="meme-cards">
-      <h2>Мемные карточки "умного контекста"</h2>
+     <section class="container" id="meme-cards">
+      <h2>Квантовые инсайты для гидро-мышления</h2>
       <div class="meme-grid">
         <article class="meme-card">
           <div class="meme-top">Космо-аналитика</div>
@@ -595,40 +662,7 @@
       </div>
     </section>
 
-    <section class="container" id="interactive">
-      <h2>Интерактивный центр потока</h2>
-      <div class="fun-lab">
-        <p class="muted">Нажимай кнопки, получай диагнозы, выбивай места и повышай уровень рофло-просветления.</p>
-        <div class="fun-grid">
-          <article class="fun-box">
-            <h3>Диагноз потока</h3>
-            <button class="mini-btn" id="diagnosisBtn">Поставить диагноз</button>
-            <div class="result" id="diagnosisResult">Ожидаю диагностику...</div>
-          </article>
-          <article class="fun-box">
-            <h3>Мантра дня</h3>
-            <button class="mini-btn" id="newMantraBtn">Дай ультра-мантру</button>
-            <div class="result" id="mantraResult">Нажми кнопку, чтобы получить усиление.</div>
-          </article>
-          <article class="fun-box">
-            <h3>Выбить место в потоке</h3>
-            <button class="mini-btn" id="slotHackBtn">Попробовать выбить</button>
-            <div class="result" id="slotHackResult">Статус: рынок мест нестабилен.</div>
-          </article>
-          <article class="fun-box">
-            <h3>Квиз: насколько ты в застое?</h3>
-            <p class="muted">Сколько вкладок "начну с понедельника" у тебя обычно открыто?</p>
-            <div class="quiz-options">
-              <button class="chip" data-score="1">0-3, я собран</button>
-              <button class="chip" data-score="2">4-9, есть нюанс</button>
-              <button class="chip" data-score="3">10+, я легенда прокрастинации</button>
-            </div>
-            <div class="result" id="quizResult">Ответь, и поток вынесет вердикт.</div>
-          </article>
-        </div>
-        <div class="ticker" id="liveTicker" aria-live="polite">LIVE: Система наблюдает за колебаниями космоклапана...</div>
-      </div>
-    </section>
+
 
     <section class="container" id="cases">
       <div class="cases-head">
@@ -697,7 +731,7 @@
   <script>
     const stock = document.getElementById("stockStatus");
     const mantra = document.getElementById("mantraLine");
-    const catComet = document.getElementById("catComet");
+    const eggplantComet = document.getElementById("eggplantComet");
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const mantras = [
       "Поток идет. Клапан поет.",
@@ -733,13 +767,7 @@
       "Энергетический аудит: часть мест ушла в VIP-измерение.",
       "Срочный созвон с галактикой: добавлен один слот."
     ];
-    const diagnosisPool = [
-      "Диагноз: зажим потока 82%. Срочно нужен ритуал 'чай и действие'.",
-      "Диагноз: чакра дедлайна воспалена. Выписан тариф 'Мощный Поток'.",
-      "Диагноз: луг изобилия в спячке. Рекомендуем контент-полив 2 раза в день.",
-      "Диагноз: уровень сомнений критический. Нужна инъекция решительности.",
-      "Диагноз: гиперрефлексия 5-й степени. Лечится первыми шагами."
-    ];
+
     const liveEvents = [
       "LIVE: Сергей из Омска открыл космоклапан и взял 'Капельку'.",
       "LIVE: Неизвестный герой выбил +1 место через кнопку хака.",
@@ -753,15 +781,21 @@
     function updateStock() {
       const roll = Math.random();
 
-      if (roll < 0.18) {
-        places = Math.max(0, places - Math.floor(Math.random() * 3 + 1));
-      } else if (roll < 0.34) {
-        places = Math.min(12, places + Math.floor(Math.random() * 3 + 1));
-      } else if (roll < 0.42) {
-        places = 0;
-      } else {
-        places = Math.max(1, Math.min(10, places + (Math.random() > 0.5 ? 1 : -1)));
+      // Более плавные изменения
+      if (roll < 0.15) {
+        // Иногда уменьшаем на 1
+        places = Math.max(0, places - 1);
+      } else if (roll < 0.25) {
+        // Иногда увеличиваем на 1
+        places = Math.min(12, places + 1);
+      } else if (roll < 0.28 && places > 3) {
+        // Редко резко уменьшаем (кто-то взял несколько мест)
+        places = Math.max(0, places - Math.floor(Math.random() * 2 + 1));
+      } else if (roll < 0.3 && places < 8) {
+        // Редко резко увеличиваем (вернули места)
+        places = Math.min(12, places + Math.floor(Math.random() * 2 + 1));
       }
+      // В остальных случаях (70%) количество не меняется
 
       if (places === 0) {
         const event = emergencyEvents[Math.floor(Math.random() * emergencyEvents.length)];
@@ -778,54 +812,8 @@
       i++;
     }
 
-    const diagnosisBtn = document.getElementById("diagnosisBtn");
-    const diagnosisResult = document.getElementById("diagnosisResult");
-    const newMantraBtn = document.getElementById("newMantraBtn");
-    const mantraResult = document.getElementById("mantraResult");
-    const slotHackBtn = document.getElementById("slotHackBtn");
-    const slotHackResult = document.getElementById("slotHackResult");
-    const quizResult = document.getElementById("quizResult");
-    const quizChips = document.querySelectorAll(".chip");
     const liveTicker = document.getElementById("liveTicker");
-
-    diagnosisBtn.addEventListener("click", () => {
-      diagnosisResult.textContent = diagnosisPool[Math.floor(Math.random() * diagnosisPool.length)];
-    });
-
-    newMantraBtn.addEventListener("click", () => {
-      const selected = mantras[Math.floor(Math.random() * mantras.length)];
-      mantraResult.textContent = `[ ${selected} ]`;
-      mantra.textContent = `[ ${selected} ]`;
-    });
-
-    slotHackBtn.addEventListener("click", () => {
-      const roll = Math.random();
-      if (roll < 0.28) {
-        places = Math.min(12, places + 1);
-        slotHackResult.textContent = `Успех! Выбит дополнительный слот. Теперь мест: ${places}.`;
-      } else if (roll < 0.65) {
-        slotHackResult.textContent = "Почти получилось. Космошлюз просит повторить через 7 секунд.";
-      } else {
-        places = Math.max(0, places - 1);
-        slotHackResult.textContent = `Ой. Ты случайно закрыл один слот. Осталось: ${places}.`;
-      }
-      if (places === 0) {
-        stock.textContent = "Мест нет. Но паника создает возможности.";
-      }
-    });
-
-    quizChips.forEach((chip) => {
-      chip.addEventListener("click", () => {
-        const score = Number(chip.dataset.score);
-        if (score === 1) {
-          quizResult.textContent = "Вердикт: поток живой, но нуждается в полировке. Ты близко к легендарному режиму.";
-        } else if (score === 2) {
-          quizResult.textContent = "Вердикт: средний застой. Назначен мини-ритуал: 1 задача без отмазок прямо сейчас.";
-        } else {
-          quizResult.textContent = "Вердикт: ультра-застой. Срочно активируй режим 'делаю, потом думаю'.";
-        }
-      });
-    });
+    const tariffCards = document.querySelectorAll("#tariffs .card");
 
     function updateLiveTicker() {
       liveTicker.textContent = liveEvents[Math.floor(Math.random() * liveEvents.length)];
@@ -834,54 +822,82 @@
     let stockTimer = null;
     let mantraTimer = null;
     let tickerTimer = null;
-    let catTimer = null;
-    let catLock = false;
+    let eggplantTimer = null;
+    let eggplantLock = false;
 
-    function launchCatComet() {
-      if (reduceMotion || catLock) {
+    function launchEggplantComet() {
+      if (reduceMotion || eggplantLock) {
         return;
       }
-      catLock = true;
-      catComet.style.top = `${Math.floor(Math.random() * 55) + 10}%`;
-      catComet.classList.remove("fly");
-      void catComet.offsetWidth;
-      catComet.classList.add("fly");
+      eggplantLock = true;
+      
+      // Рандомное направление: 0 = слева направо, 1 = справа налево
+      const direction = Math.floor(Math.random() * 2);
+      const verticalPos = Math.floor(Math.random() * 60) + 15; // 15% - 75%
+      
+      // Сброс стилей
+      eggplantComet.style.left = '';
+      eggplantComet.style.top = '';
+      eggplantComet.style.right = '';
+      eggplantComet.style.transform = '';
+      
+      // Устанавливаем начальную позицию
+      if (direction === 0) { // слева направо
+        eggplantComet.style.left = '-180px';
+        eggplantComet.style.top = `${verticalPos}%`;
+        eggplantComet.style.transform = 'translateX(0) rotate(0deg) scale(0.8)';
+      } else { // справа налево
+        eggplantComet.style.right = '-180px';
+        eggplantComet.style.top = `${verticalPos}%`;
+        eggplantComet.style.transform = 'translateX(0) rotate(0deg) scale(0.8) scaleX(-1)'; // зеркально
+      }
+      
+      eggplantComet.classList.remove("fly", "reverse");
+      void eggplantComet.offsetWidth;
+      
+      if (direction === 0) {
+        eggplantComet.classList.add("fly");
+      } else {
+        eggplantComet.classList.add("fly", "reverse");
+      }
+      
       setTimeout(() => {
-        catComet.classList.remove("fly");
-        catLock = false;
-      }, 5000);
+        eggplantComet.classList.remove("fly", "reverse");
+        eggplantLock = false;
+      }, 4000);
     }
 
-    function scheduleCatComet() {
+    function scheduleEggplantComet() {
       if (reduceMotion) {
         return;
       }
-      const rareDelayMs = Math.floor((55 + Math.random() * 50) * 1000);
-      catTimer = window.setTimeout(() => {
-        launchCatComet();
-        scheduleCatComet();
-      }, rareDelayMs);
+      // Летает чаще: от 15 до 35 секунд
+      const delayMs = Math.floor((15 + Math.random() * 20) * 1000);
+      eggplantTimer = window.setTimeout(() => {
+        launchEggplantComet();
+        scheduleEggplantComet();
+      }, delayMs);
     }
 
     function startDynamicEffects() {
       if (stockTimer || mantraTimer || tickerTimer) {
         return;
       }
-      stockTimer = window.setInterval(updateStock, 2200);
-      mantraTimer = window.setInterval(updateMantra, 2500);
-      tickerTimer = window.setInterval(updateLiveTicker, 3300);
-      scheduleCatComet();
+      stockTimer = window.setInterval(updateStock, 6500); // было 2200
+      mantraTimer = window.setInterval(updateMantra, 3800); // было 2500
+      tickerTimer = window.setInterval(updateLiveTicker, 5000); // было 3300
+      scheduleEggplantComet();
     }
 
     function stopDynamicEffects() {
       clearInterval(stockTimer);
       clearInterval(mantraTimer);
       clearInterval(tickerTimer);
-      clearTimeout(catTimer);
+      clearTimeout(eggplantTimer);
       stockTimer = null;
       mantraTimer = null;
       tickerTimer = null;
-      catTimer = null;
+      eggplantTimer = null;
     }
 
     document.addEventListener("visibilitychange", () => {
@@ -917,6 +933,52 @@
     casesNext.addEventListener("click", () => {
       currentPage = (currentPage + 1) % totalPages;
       renderTestimonials();
+    });
+
+    // Обработчики для кликабельных тарифов
+    tariffCards.forEach((card, index) => {
+      card.addEventListener("click", () => {
+        // Добавляем класс для анимации
+        card.classList.add("clicked");
+        
+        // Убираем класс через время
+        setTimeout(() => {
+          card.classList.remove("clicked");
+        }, 600);
+        
+        // Сообщения для разных тарифов
+        const messages = [
+          "Тариф 'Капелька' выбран! Готовим аудит твоего внутреннего давления...",
+          "Тариф 'Мощный Поток' активирован! Разбираем блоки по дате рождения и вайбу...",
+          "VIP 'Гидро-Вознесение' включен! Готовим созвон 'от пробки до прорыва'..."
+        ];
+        
+        // Показываем сообщение в live тикере
+        liveTicker.textContent = `LIVE: ${messages[index]}`;
+        
+        // Обновляем статус мест
+        if (places > 0) {
+          places--;
+          stock.textContent = `Слот забронирован! Осталось мест: ${places}`;
+        }
+        
+        // Запускаем баклажан для праздника
+        launchEggplantComet();
+      });
+      
+      // Добавляем aria-label для доступности
+      const title = card.querySelector("h3").textContent;
+      card.setAttribute("aria-label", `Выбрать ${title}`);
+      card.setAttribute("role", "button");
+      card.setAttribute("tabindex", "0");
+      
+      // Обработка нажатия клавиши Enter
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          card.click();
+        }
+      });
     });
 
     renderTestimonials();
