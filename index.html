@@ -977,13 +977,21 @@
     // Обработчики для кликабельных тарифов
     tariffCards.forEach((card, index) => {
       card.addEventListener("click", () => {
-        // Добавляем класс для анимации
+        // Убираем класс clicked у всех тарифов
+        tariffCards.forEach(c => c.classList.remove("clicked"));
+        
+        // Убираем класс featured-tariff у всех (сброс выделения)
+        tariffCards.forEach(c => c.classList.remove("featured-tariff"));
+        
+        // Добавляем класс для анимации текущему тарифу
         card.classList.add("clicked");
         
-        // Убираем класс через время
-        setTimeout(() => {
-          card.classList.remove("clicked");
-        }, 1000); // Увеличиваем до 1000ms чтобы совпадало с длительностью анимации
+        // Если это "Мощный Поток" (индекс 1), добавляем featured-tariff после анимации
+        if (index === 1) {
+          setTimeout(() => {
+            card.classList.add("featured-tariff");
+          }, 1000);
+        }
         
         // Сообщения для разных тарифов
         const messages = [
@@ -1025,6 +1033,11 @@
     updateMantra();
     updateLiveTicker();
     startDynamicEffects();
+    
+    // Инициализируем featured тариф (Мощный Поток) при загрузке
+    if (tariffCards[1]) {
+      tariffCards[1].classList.add("featured-tariff");
+    }
   </script>
 </body>
 </html>
