@@ -198,7 +198,11 @@
     .card:hover {
       transform: translateY(-8px);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-      border-color: rgba(255, 79, 216, 0.4);
+      border-color: rgba(255, 79, 216, 0.4) !important;
+    }
+
+    .featured-tariff:hover {
+      border-color: rgba(255, 79, 216, 0.7) !important;
     }
 
     .card:active {
@@ -206,9 +210,13 @@
       transition: transform 0.15s ease;
     }
 
+    .featured-tariff {
+      border-color: rgba(255, 79, 216, 0.5) !important;
+    }
+
     .card.clicked {
       animation: tariffPulse 1s cubic-bezier(0.34, 1.56, 0.64, 1);
-      border-color: var(--accent-2);
+      border-color: var(--accent-2) !important;
       background: linear-gradient(160deg, rgba(125, 255, 234, 0.15), rgba(255, 79, 216, 0.15));
       box-shadow: 0 0 40px rgba(125, 255, 234, 0.4), 0 20px 50px rgba(0, 0, 0, 0.4);
     }
@@ -614,7 +622,7 @@
             <li>1 голосовое: "Ты сможешь, брат"</li>
           </ul>
         </article>
-        <article class="card" style="border-color: rgba(255, 79, 216, 0.5);">
+        <article class="card featured-tariff">
           <h3>Тариф "Мощный Поток"</h3>
           <p class="price">9 999 ₽</p>
           <ul class="list">
